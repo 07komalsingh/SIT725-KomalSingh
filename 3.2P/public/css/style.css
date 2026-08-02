@@ -1,0 +1,8 @@
+.card .card-image img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.chip.difficulty-easy { background-color: #c8e6c9; }
+.chip.difficulty-medium { background-color: #ffe0b2; }
+.chip.difficulty-hard { background-color: #ffcdd2; }
