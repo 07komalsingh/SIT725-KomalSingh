@@ -1,0 +1,18 @@
+{
+  "name": "4.2p",
+  "version": "1.0.0",
+  "description": "SIT725 4.2P - Add a Database (Recipe Box, MongoDB-backed)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^8.9.5"
+  }
+}

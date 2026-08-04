@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Box | SIT725 4.2P</title>
+
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="nav-wrapper teal darken-2">
+      <a href="#" class="brand-logo center">Recipe Box</a>
+    </div>
+  </nav>
+
+  <div class="container" style="margin-top: 30px;">
+    <h4 class="center-align">Today's Recipes</h4>
+    <p class="center-align grey-text text-darken-1">
+      Served from MongoDB via the server's <code>/api/recipes</code> endpoint.
+    </p>
+
+    <div id="recipe-cards" class="row" style="margin-top: 20px;">
+      <!-- Cards are inserted here by app.js -->
+    </div>
+
+    <div class="row">
+      <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="card-panel">
+          <span class="card-title">Add a Recipe</span>
+          <form id="recipe-form">
+            <div class="input-field">
+              <input id="title" name="title" type="text" required minlength="3" maxlength="80">
+              <label for="title">Title</label>
+            </div>
+            <div class="input-field">
+              <textarea id="description" name="description" class="materialize-textarea" required maxlength="300"></textarea>
+              <label for="description">Description</label>
+            </div>
+            <div class="input-field">
+              <input id="time" name="time" type="text" required placeholder="e.g. 20 mins">
+              <label for="time">Time</label>
+            </div>
+            <div class="input-field">
+              <select id="difficulty" name="difficulty" required>
+                <option value="" disabled selected>Choose difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+              <label>Difficulty</label>
+            </div>
+            <div class="input-field">
+              <input id="cuisine" name="cuisine" type="text" required minlength="2" maxlength="40">
+              <label for="cuisine">Cuisine</label>
+            </div>
+            <div class="input-field">
+              <input id="image" name="image" type="url" required placeholder="https://...">
+              <label for="image">Image URL</label>
+            </div>
+            <button class="btn teal darken-2 waves-effect waves-light" type="submit">
+              Add Recipe
+              <i class="material-icons right">send</i>
+            </button>
+            <p id="form-message" class="red-text" style="margin-top: 10px;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
