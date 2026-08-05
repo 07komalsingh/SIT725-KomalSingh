@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SIT725 2.2P - Express Web Servers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 0 16px;
+      color: #222;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 14px;
+      padding: 8px 16px;
+      background: #007b7f;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 12px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>SIT725 Task 2.2P - Express Web Servers</h1>
+
+  <div class="card">
+    <h2>Add Two Numbers (GET /add)</h2>
+    <label for="a">Number A</label>
+    <input type="number" id="a" value="5" />
+    <label for="b">Number B</label>
+    <input type="number" id="b" value="3" />
+    <button onclick="addNumbers()">Add</button>
+    <div class="result" id="addResult"></div>
+  </div>
+
+  <div class="card">
+    <h2>Basic Calculator (POST /calculate)</h2>
+    <label for="ca">Number A</label>
+    <input type="number" id="ca" value="10" />
+    <label for="cb">Number B</label>
+    <input type="number" id="cb" value="4" />
+    <label for="op">Operation</label>
+    <select id="op">
+      <option value="add">Add</option>
+      <option value="subtract">Subtract</option>
+      <option value="multiply">Multiply</option>
+      <option value="divide">Divide</option>
+    </select>
+    <button onclick="calculate()">Calculate</button>
+    <div class="result" id="calcResult"></div>
+  </div>
+
+  <script>
+    async function addNumbers() {
+      const a = document.getElementById('a').value;
+      const b = document.getElementById('b').value;
+      const res = await fetch(`/add?a=${a}&b=${b}`);
+      const data = await res.json();
+      document.getElementById('addResult').innerText = res.ok
+        ? `Result: ${data.result}`
+        : `Error: ${data.error}`;
+    }
+
+    async function calculate() {
+      const a = document.getElementById('ca').value;
+      const b = document.getElementById('cb').value;
+      const operation = document.getElementById('op').value;
+      const res = await fetch('/calculate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ a, b, operation }),
+      });
+      const data = await res.json();
+      document.getElementById('calcResult').innerText = res.ok
+        ? `Result: ${data.result}`
+        : `Error: ${data.error}`;
+    }
+  </script>
+</body>
+</html>
